@@ -42,6 +42,7 @@ Separate in 3 classes:
         - size ?
     - Create validation list with solution
 - Extract features
+    - Apply smoothing
     - Detect sign and remove background
         - Possible through hue ? 
     - Point/Edge detection
