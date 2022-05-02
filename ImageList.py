@@ -18,35 +18,22 @@ class ImageList():
                 return i
         return -1 
 
-    def evaluate_red_circles_accuracy(self) -> float:
-        cnt_img_with_red_circle = 0
+    def evaluate_classification_accuracy(self, type_) -> float:
+        if type_ != 'red_circle' and type_ != 'blue_square' and type_ != 'stop_sign':
+            print ('That type doesn\'t exist so an accuracy can\'t be measured')
+            return 0.0
+        
+        cnt_img_with_type = 0
         cnt_correctly_classified = 0
         for image in self.images:
-            if 'red_circle' in image.types:
-                cnt_img_with_red_circle += 1
-                if 'red_circle' in image.classifications:
+            if type_ in image.types:
+                cnt_img_with_type += 1
+                if type_ in image.classifications:
                     cnt_correctly_classified += 1
-        return cnt_correctly_classified * 100 / cnt_img_with_red_circle
-
-    def evaluate_blue_squares_accuracy(self) -> float:
-        cnt_img_with_blue_square = 0
-        cnt_correctly_classified = 0
-        for image in self.images:
-            if 'blue_square' in image.types:
-                cnt_img_with_blue_square += 1
-                if 'blue_square' in image.classifications:
-                    cnt_correctly_classified += 1
-        return cnt_correctly_classified * 100 / cnt_img_with_blue_square
-
-    def evaluate_stop_signs_accuracy(self) -> float:
-        cnt_img_with_stop_sign = 0
-        cnt_correctly_classified = 0
-        for image in self.images:
-            if 'stop_sign' in image.types:
-                cnt_img_with_stop_sign += 1
-                if 'stop_sign' in image.classifications:
-                    cnt_correctly_classified += 1
-        return cnt_correctly_classified * 100 / cnt_img_with_stop_sign
+        
+        if cnt_img_with_type == cnt_correctly_classified and cnt_img_with_type == 0: 
+            return 100.0
+        return cnt_correctly_classified * 100 / cnt_img_with_type
 
     def get_image(self, idx: int) -> Image:
         return self.images[idx] 
