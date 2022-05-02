@@ -1,5 +1,5 @@
+import copy
 from Image import Image
-import logging
 
 
 class ImageList():
@@ -40,3 +40,11 @@ class ImageList():
     
     def len(self) -> int:
         return len(self.images)
+
+    def copy(self):
+        ret = ImageList()
+
+        for image in self.images:
+            ret.add_image(copy.deepcopy(image))
+        
+        return ret
