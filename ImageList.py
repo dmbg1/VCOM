@@ -1,4 +1,5 @@
 from Image import Image
+import logging
 
 
 class ImageList():
@@ -9,11 +10,11 @@ class ImageList():
         self.images.append(image)
     
     # Returns index that contains image with same filename or -1 if there is none
-    def contains_img(self, image: str) -> int:
+    def contains_img(self, filename: str) -> int:
         i = 0
         for image in self.images:
             i += 1
-            if image.filename == image:
+            if image.filename == filename:
                 return i
         return -1 
 
