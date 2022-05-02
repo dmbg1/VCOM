@@ -1,6 +1,6 @@
 results/blue_squares/**
 results/stop_signs/**
-results/unrecogniseds/**
+results/unknowns/**
 results/red_circles/**
 __pycache__
 .ipynb_checkpoints
